@@ -16,12 +16,12 @@ public class Bicicleta extends Vehicul {
 	@Override
 	public String nume() {
 		
-		return "BMX";
+		return "Logan";
 	}
 	@Override
 	public String motorizare() {
 		
-		return "Pedale";
+		return "1.4 turbo";
 	}
 	@Override
 	public void detaliiVehicul() {
