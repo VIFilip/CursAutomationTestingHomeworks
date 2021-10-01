@@ -32,27 +32,18 @@ public class Catalog {
 		nota = scan.nextInt();
 		
 	
-		//daca in catalog avem nume si nota printam mesajul
-				if(catalog.containsKey(nume) && catalog.containsValue(nota)) {
-					System.out.println("Ai deja nota!");//functioneaza cu cei din lista
-					
-				//daca nota si numele nu se regasesc in catalog, adaugam nota si numele si printam mesajul	
-				}else if(catalog.containsKey(nume) != true && catalog.containsValue(nota) != true) {
-					catalog.put(nume, nota);
-				System.out.println("NU aveai nota, ti-am adaugat acum");//functioneaza daca adaugam pe cineva care nu este in lista
-				
-				//daca nota introdusa este mai mica decat cea din catalog, printam mesajul
-				}else if(nota < catalog.get(nume) ){
-					System.out.println("Nu ai nevoie de alta nota");//nu functioneaza
-					
-				//daca nota introdusa este mai mare decat nota din catalog, facem update
-				}else if(catalog.containsKey(nume) && nota > catalog.get(nume)) {
-					catalog.put(nume, nota);//nu functioneaza
-				//printam catalogul
-				}else {
-					
-					System.out.println("Aici suntem in else: " + catalog);
-				}
+		//incepi prin a verifica doar numele.Daca nu exista il scrii in Map. Nota nu conteaza in pasul asta
+		if (!catalog.containsKey(nume)) {
+		    catalog.put(nume, nota);
+		    System.out.println("NU aveai nota, ti-am adaugat acum");
+		//Daca pica pe else -if este clar ca mai sus a evaluat False, deci Numele exista in catalog. Asa ca verificam nota daca trebuie sa fie updatata    
+		}else if (nota<catalog.get(nume)) {
+		    System.out.println("Nu ai nevoie de alta nota");
+		//Daca pica pe else, inseama ca pe else if nota a evaluat false, deci nu e mai mica, deci este safe sa o scriem :)    
+		} else {catalog.put(nume, nota);}
+		
+		System.out.println("");
+
 				System.out.println("---------------------------------------");
 				
 				
