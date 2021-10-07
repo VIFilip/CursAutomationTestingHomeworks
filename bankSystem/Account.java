@@ -6,8 +6,13 @@ public abstract class Account {
 	double balance;
 	Customer accountOwner;
 	
+	public Account (int accountNumber, double balance, Customer accountOwner) {
+	    setAccountNumber(accountNumber);
+	    setBalance(balance);
+	    setAccountOwner(accountOwner);
+	}
 
-	abstract public double Withdraw(double amount) throws InsuficientFundsException;
+	abstract public void withdraw(double amount) throws InsuficientFundsException;
 	
 	
 	
