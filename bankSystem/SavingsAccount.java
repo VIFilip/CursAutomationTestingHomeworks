@@ -2,24 +2,19 @@ package bankSystem;
 
 import curs6.MyCustomException;
 
-public abstract class SavingsAccount extends Account {
+public  class SavingsAccount extends Account {
 
 	//setam in constructor variabilele
-public SavingsAccount(String accountOwner, int accountNumber, double balance) {
-		accountOwner = accountOwner;
-		accountNumber = accountNumber;
-		balance = balance;
+	public SavingsAccount(int accountNumber, double balance, Customer accountOwner) {
+	    super(accountNumber, balance, accountOwner);
 	}
 	
 	@Override
-	public abstract Withdraw() {//nu functioneaza cu override
-		
-		if(amount<balance) {
-			throw InsuficientFundsException i
-			System.out.println(i.printStackTrace());
-		}else {
-			amount - balance			
-		}
+	public void withdraw(double sum) throws InsuficientFundsException {
+	    if(getBalance() < sum) {
+	        throw new InsuficientFundsException("Insufficient funds for transaction.");
+	    } else {balance = balance-sum;}
+	}
 		
 		
 	}
@@ -28,5 +23,5 @@ public SavingsAccount(String accountOwner, int accountNumber, double balance) {
 	
 	
 	
-}
+
 

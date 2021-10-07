@@ -6,6 +6,11 @@ public class Customer {
 	private String adress;
 	private String email;
 	
+	public Customer(String name, String adress, String email) {
+	    setName(name);
+	    setAdress(adress);
+	    setEmail(email);
+	}
 	
 	
 	public String getName() {
