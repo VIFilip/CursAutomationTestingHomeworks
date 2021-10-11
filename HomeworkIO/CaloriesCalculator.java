@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class CaloriesCalculator {
 
-	String leguma;
+	static String leguma;
 	int calorii;
 	
 		public static void main(String[] args) throws IOException {
@@ -30,6 +30,26 @@ public class CaloriesCalculator {
 			
 			System.out.println(prop);
 			
+			//CaloriesCalculator.mapConversion();
+			Scanner scan = new Scanner(System.in);
+			System.out.println("Ce leguma doresti sa cumperi?");
+			leguma = scan.nextLine();
+			
+			try {
+			    if(mapConversion().containsKey(leguma)) {
+			        System.out.println("Leguma aleasa de tine are: " + mapConversion().get(leguma) + " calorii");
+
+			    }else {
+			        System.out.println("Nu vindem aceasta leguma, te rog sa alegi alta!");
+			    }
+			} catch (Exception e) {
+
+			    e.printStackTrace();
+			}
+		
+		
+
+			
 			
 
 		}catch (FileNotFoundException e) {
@@ -37,25 +57,7 @@ public class CaloriesCalculator {
 			e.printStackTrace();
 		}
 			
-			CaloriesCalculator.mapConversion(null);
-			Scanner scan = new Scanner(System.in);
-			System.out.println("Ce leguma doresti sa cumperi?");
-			leguma = scan.nextLine();
 			
-			try {
-				if(mapLegume.containsKey(leguma)) {
-					System.out.println("Leguma aleasa de tine are: " + mapLegume.containsValue() + " calorii");
-					
-				}else {
-					System.out.println("Nu vindem aceasta leguma, te rog sa alegi alta!");
-				}
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-			}
-		
-		
-
 	}
 		
 		public static void readFile() throws IOException	{
@@ -80,7 +82,11 @@ public class CaloriesCalculator {
 			
 
 }
-		public static HashMap<String, String> mapConversion(Properties prop) {
+		public static HashMap<String, String> mapConversion() throws IOException {
+		    InputStream input = new FileInputStream("legume.properties");//path-ul fisierului
+
+		    Properties prop = new Properties();
+		    prop.load(input);
 		    HashMap<String, String> mapLegume = new HashMap<>();
 		    for (Map.Entry<Object, Object> entry : prop.entrySet()) {
 		        mapLegume.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()));
